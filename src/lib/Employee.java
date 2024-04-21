@@ -6,6 +6,9 @@ import java.util.LinkedList;
 import java.util.List;
 
 public class Employee {
+	private static final int GRADE_1_SALARY = 3000000;
+    private static final int GRADE_2_SALARY = 5000000;
+    private static final int GRADE_3_SALARY = 7000000;
 
 	private String employeeId;
 	private String firstName;
@@ -54,11 +57,11 @@ public class Employee {
 
 	public void setBaseMonthlySalary(int grade) {
 		if (grade == 1) {
-			monthlySalary = 3000000;
+			monthlySalary = GRADE_1_SALARY;
 		} else if (grade == 2) {
-			monthlySalary = 5000000;
+			monthlySalary = GRADE_2_SALARY;
 		} else if (grade == 3) {
-			monthlySalary = 7000000;
+			monthlySalary = GRADE_3_SALARY;
 		}
 	}
 
