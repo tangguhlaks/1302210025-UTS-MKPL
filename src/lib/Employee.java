@@ -22,7 +22,7 @@ public class Employee {
 	private int monthWorkingInYear;
 	
 	private boolean isForeigner;
-	private boolean gender; //true = Laki-laki, false = Perempuan
+	private Gender gender;
 	
 	private int monthlySalary;
 	private int otherMonthlyIncome;
@@ -33,6 +33,11 @@ public class Employee {
 
 	private List<String> childNames;
 	private List<String> childIdNumbers;
+
+	public enum Gender {
+		MALE,
+		FEMALE
+	}
 	
 	public Employee(String employeeId, String firstName, String lastName, String idNumber, String address, int yearJoined, int monthJoined, int dayJoined, boolean isForeigner, boolean gender) {
 		this.employeeId = employeeId;
