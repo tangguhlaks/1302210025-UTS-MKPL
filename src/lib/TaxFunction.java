@@ -20,12 +20,12 @@ public class TaxFunction {
 	private static final int MAX_CHILDREN = 3;
 	private static final double TAX_RATE = 0.05;
 
-	private static int calculateTaxableIncome(int monthlySalary, int otherMonthlyIncome, int numberOfMonthWorking, int deductible, boolean isMarried, int numberOfChildren) {
+	private static int calculateTaxableIncome(int monthlySalary, int otherMonthlyIncome, int numberOfMonthWorking, int annualDeductible, boolean isMarried, int numberOfChildren) {
 		int untaxedIncome = BASE_INCOME + (isMarried ? MARRIED_INCREMENT : 0) + (numberOfChildren * CHILD_INCREMENT);
-		return (int) Math.round(((monthlySalary + otherMonthlyIncome) * numberOfMonthWorking) - deductible) - untaxedIncome;
+		return (int) Math.round(((monthlySalary + otherMonthlyIncome) * numberOfMonthWorking) - annualDeductible) - untaxedIncome;
 	}
 
-	public static int calculateTax(int monthlySalary, int otherMonthlyIncome, int numberOfMonthWorking, int deductible, boolean isMarried, int numberOfChildren) {
+	public static int calculateTax(int monthlySalary, int otherMonthlyIncome, int numberOfMonthWorking, int annualDeductible, boolean isMarried, int numberOfChildren) {
 		
 		int tax = 0;
 		
@@ -37,13 +37,13 @@ public class TaxFunction {
 			numberOfChildren = 3;
 		}
 
-		tax = calculateTaxableIncome(monthlySalary, otherMonthlyIncome, numberOfMonthWorking, deductible, isMarried, numberOfChildren);
-		tax = tax > 0 ?	Math.round(TAX_RATE * taxableIncome) : tax;
+		annualTax = calculateTaxableIncome(monthlySalary, otherMonthlyIncome, numberOfMonthWorking, annualDeductible, isMarried, numberOfChildren);
+		annualTax = annualTax > 0 ?	Math.round(TAX_RATE * taxableIncome) : annualTax;
 
-		if (tax < 0) {
+		if (annualTax < 0) {
 			return 0;
 		}else {
-			return tax;
+			return annualTax;
 		}
 			 
 	}
